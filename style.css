@@ -1,0 +1,55 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+.playeronelogo {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+}
+
+.playertwologo {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+}
+
+.wrapper  {
+        display: flex;
+        flex-wrap: wrap;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        font-size: 70px;
+}
+
+.wrapper div {
+        height: 33%;
+        width: 30%;
+        border: 2px solid gray;
+}
+    
+
+.scoreboard {
+   width: 100%;
+}
+
+.playerone {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+}
+
+.playertwo {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+}
