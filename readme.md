@@ -41,7 +41,9 @@ Should a player wins the game, we want to count the score so that this can be di
 ## Next Steps
 Improve the user interface so that the third "X" or "O' in the row reveal themselves before the player winner alert comes up.
 
-Improve the design!! 
+If player clicks on a square which has already been marked, they lose a turn.
+
+Improve the design, add animations, etc
 
 
 
