@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-click here to play my game: <https://github.com/meganlee18/wdi-tictactoe/blob/master/index.html>
+Click here to play my game: <https://meganlee18.github.io/wdi-tictactoe/>
 
 ## Usage Instructions
 This is a game for two players. The objective of the game is to compete between each other to achieve three "X"s or three"O"s in a row.
