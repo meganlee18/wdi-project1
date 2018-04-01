@@ -42,7 +42,7 @@ var currentPlayer = 1
 var playerOneMoves = []
 var playerTwoMoves = []
 
-
+//Player One starts the game
 if (currentPlayer === 1) {
   playerOneLogo.classList.add('playerturn');
 }
@@ -51,14 +51,15 @@ if (currentPlayer === 1) {
 var revealCell = function (event) {
 
   //Select specific classlist
-  cell = event.target  // cell/ element where the click event happened
-  cellClass = cell.classList[1]
-  //pushing clicked target into the array
+  var cell = event.target  // cell or element where the click event happened
+  var cellClass = cell.classList[1]
+
 
   if (cell.textContent === "X" || cell.textContent === "O") {
     alert("The cell is already marked")
   } else if (currentPlayer === 1) {
     cell.textContent = "X"
+    //pushing clicked target into the array
     playerOneMoves.push(cellClass)
 
   } else if (currentPlayer === 2) {
@@ -127,7 +128,7 @@ function checkWin() {
       countPlayerOneWins = countPlayerOneWins + 1
 
       // DISPLAY COUNT WINS FOR PLAYER ONE
-      playerOneScore.textContent = Number(playerOneScore.textContent) + Number(countPlayerOneWins)
+      playerOneScore.textContent = Number(countPlayerOneWins)
 
     } else if ((playerTwoMoves.indexOf(combo[0]) > -1)
       && (playerTwoMoves.indexOf(combo[1]) > -1)
@@ -139,11 +140,11 @@ function checkWin() {
       countPlayerTwoWins = countPlayerTwoWins + 1
 
       //DISPLAY COUNT WINS FOR PLAYER TWO
-      playerTwoScore.textContent = Number(playerTwoScore.textContent) + Number(countPlayerTwoWins)
+      playerTwoScore.textContent = Number(countPlayerTwoWins)
     } else {
       checkDraw()
     }
-  } 
+  }
 }
 
 //Switch between players
