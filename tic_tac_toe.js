@@ -1,14 +1,5 @@
 /*
-We'll be making tic tac toe (knots and crosses).
-
-- Render a game in the browser
-- Switch turns between more than one player
-- Design logic for winning & visually display which player won
-- Include separate HTML / CSS / JavaScript files
-- Stick with KISS (Keep It Simple Stupid) principles
-- Use Javascript for DOM manipulation
-- Deploy your game online, where the rest of the world can access it
-- Use semantic markup for HTML and CSS (adhere to best practices)
+Tic tac toe
  
   My game strategy:
   1. Player 1's turn (border lights up)
@@ -37,10 +28,17 @@ var playerTwoScore = document.querySelector(".playerTwoScore")
 var playerOneLogo = document.querySelector(".playeronelogo")
 var playerTwoLogo = document.querySelector(".playertwologo")
 
+var results = document.querySelector(".results")
+
 var currentPlayer = 1
 
 var playerOneMoves = []
 var playerTwoMoves = []
+
+var dogWoof = new Audio("woof.mp3")
+var dogHowl = new Audio("howl.mp3")
+var dogWhine = new Audio("whine.mp3")
+
 
 //Player One starts the game
 if (currentPlayer === 1) {
@@ -56,14 +54,22 @@ var revealCell = function (event) {
 
 
   if (cell.textContent === "X" || cell.textContent === "O") {
-    alert("The cell is already marked")
+    results.innerHTML = "The cell is already marked"
+    dogWhine.play()
+    //ADD SHAKE ANIMATION THAT SAYS NO
   } else if (currentPlayer === 1) {
-    cell.textContent = "X"
-    //pushing clicked target into the array
+    cell.style.backgroundImage = "url('westie.jpg')"
+    cell.style.backgroundSize = "100% 100%"
+    cell.style.backgroundRepeat = "no-repeat"
+    dogWoof.play()
+    //push clicked target into the array
     playerOneMoves.push(cellClass)
 
   } else if (currentPlayer === 2) {
-    cell.textContent = "O"
+    cell.style.backgroundImage = "url('black_schnauzer.jpg')"
+    cell.style.backgroundSize = "100% 100%"
+    cell.style.backgroundRepeat = "no-repeat"
+    dogWoof.play()
     playerTwoMoves.push(cellClass)
   }
 
@@ -76,7 +82,8 @@ var revealCell = function (event) {
 function resetGame() {
   for (var i = 0; i < allCells.length; i++) {
     var cell = allCells[i]
-    cell.textContent = ""
+    cell.style.backgroundImage = ""
+    results.innerHTML = ""
   }
   playerOneMoves = []
   playerTwoMoves = []
@@ -88,14 +95,14 @@ function checkDraw() {
   var hasEmptyCells = false;
   for (var i = 0; i < allCells.length; i++) {
     var cell = allCells[i]
-    if (cell.textContent == "") {
+    if (cell.style.backgroundImage == "") {
       hasEmptyCells = true
     }
   }
 
   if (hasEmptyCells == false) {
-    alert("Its a draw")
-    resetGame();
+    results.innerHTML = "Its a draw"
+    setTimeout(function(){ resetGame() }, 3000);
   }
 }
 
@@ -121,8 +128,10 @@ function checkWin() {
     if ((playerOneMoves.indexOf(combo[0]) > -1)
       && (playerOneMoves.indexOf(combo[1]) > -1)
       && (playerOneMoves.indexOf(combo[2]) > -1)) {
-      alert("Player One Wins!")
-      resetGame();
+      dogHowl.play()
+      results.innerHTML = "The Westie Wins!"
+      setTimeout(function(){ resetGame() }, 3000);
+    
 
       //count wins for Player One
       countPlayerOneWins = countPlayerOneWins + 1
@@ -133,8 +142,10 @@ function checkWin() {
     } else if ((playerTwoMoves.indexOf(combo[0]) > -1)
       && (playerTwoMoves.indexOf(combo[1]) > -1)
       && (playerTwoMoves.indexOf(combo[2]) > -1)) {
-      alert("Player Two Wins!")
-      resetGame();
+      dogHowl.play()
+      results.innerHTML = "The Schnauzer Wins!"
+      setTimeout(function(){ resetGame() }, 3000);
+
 
       //Count wins for Player Two
       countPlayerTwoWins = countPlayerTwoWins + 1
