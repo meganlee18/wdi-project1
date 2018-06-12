@@ -39,7 +39,6 @@ var dogWoof = new Audio("woof.mp3")
 var dogHowl = new Audio("howl.mp3")
 var dogWhine = new Audio("whine.mp3")
 
-
 //Player One starts the game
 if (currentPlayer === 1) {
   playerOneLogo.classList.add('playerturn');
@@ -56,7 +55,10 @@ var revealCell = function (event) {
   if (cell.style.backgroundImage != "") {
     results.innerHTML = "Uh-oh, a doggy is there!"
     dogWhine.play()
-    //ADD SHAKE ANIMATION THAT SAYS NO
+    cell.classList.remove('tada')
+    cell.classList.add('animated')
+    cell.classList.add('shake')
+    return
 
   } else if (currentPlayer === 1) {
     cell.classList.add('animated')
@@ -77,7 +79,8 @@ var revealCell = function (event) {
     dogWoof.play()
     playerTwoMoves.push(cellClass)
   }
-
+  switchPlayer()
+  
   console.log(playerOneMoves)
   console.log(playerTwoMoves)
 }
@@ -107,7 +110,7 @@ function checkDraw() {
 
   if (hasEmptyCells == false) {
     results.innerHTML = "Its a draw"
-    setTimeout(function(){ resetGame() }, 3000);
+    setTimeout(function () { resetGame() }, 3000);
   }
 }
 
@@ -135,8 +138,7 @@ function checkWin() {
       && (playerOneMoves.indexOf(combo[2]) > -1)) {
       dogHowl.play()
       results.innerHTML = "The Westie Wins!"
-      setTimeout(function(){ resetGame() }, 3000);
-    
+      setTimeout(function () { resetGame() }, 3000);
 
       //count wins for Player One
       countPlayerOneWins = countPlayerOneWins + 1
@@ -149,8 +151,7 @@ function checkWin() {
       && (playerTwoMoves.indexOf(combo[2]) > -1)) {
       dogHowl.play()
       results.innerHTML = "The Schnauzer Wins!"
-      setTimeout(function(){ resetGame() }, 3000);
-
+      setTimeout(function () { resetGame() }, 3000);
 
       //Count wins for Player Two
       countPlayerTwoWins = countPlayerTwoWins + 1
@@ -178,12 +179,12 @@ var switchPlayer = function () {
     playerTwoLogo.classList.remove('playerturn');
     playerOneLogo.classList.add('playerturn');
   }
+  results.innerHTML = ""
 }
 
 //When cell is clicked, the following functions run
 function handleCellClick(event) {
   revealCell(event)
-  switchPlayer()
   checkWin()
 }
 
