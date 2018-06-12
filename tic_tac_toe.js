@@ -37,7 +37,6 @@ var playerTwoMoves = []
 
 var dogWoof = new Audio("woof.mp3")
 var dogHowl = new Audio("howl.mp3")
-var dogWhine = new Audio("whine.mp3")
 
 //Player One starts the game
 if (currentPlayer === 1) {
@@ -54,7 +53,6 @@ var revealCell = function (event) {
 
   if (cell.style.backgroundImage != "") {
     results.innerHTML = "Uh-oh, a doggy is there!"
-    dogWhine.play()
     cell.classList.remove('tada')
     cell.classList.add('animated')
     cell.classList.add('shake')
