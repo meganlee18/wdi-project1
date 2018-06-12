@@ -53,11 +53,14 @@ var revealCell = function (event) {
   var cellClass = cell.classList[1]
 
 
-  if (cell.textContent === "X" || cell.textContent === "O") {
-    results.innerHTML = "The cell is already marked"
+  if (cell.style.backgroundImage != "") {
+    results.innerHTML = "Uh-oh, a doggy is there!"
     dogWhine.play()
     //ADD SHAKE ANIMATION THAT SAYS NO
+
   } else if (currentPlayer === 1) {
+    cell.classList.add('animated')
+    cell.classList.add('tada')
     cell.style.backgroundImage = "url('westie.jpg')"
     cell.style.backgroundSize = "100% 100%"
     cell.style.backgroundRepeat = "no-repeat"
@@ -66,6 +69,8 @@ var revealCell = function (event) {
     playerOneMoves.push(cellClass)
 
   } else if (currentPlayer === 2) {
+    cell.classList.add('animated')
+    cell.classList.add('tada')
     cell.style.backgroundImage = "url('black_schnauzer.jpg')"
     cell.style.backgroundSize = "100% 100%"
     cell.style.backgroundRepeat = "no-repeat"
